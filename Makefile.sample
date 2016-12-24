@@ -1,0 +1,29 @@
+REPOSITORY ?= plumcraft/magic_mirror
+VERSION    ?= 0.1
+BUILD_ID   ?= 1 
+IP_ADDR	   := $(shell ifconfig eno1 | grep 'inet addr:' | cut -d: -f2 | awk '{print $1}')
+
+default: build
+
+build:
+	docker build -t $(REPOSITORY):$(VERSION)-$(BUILD_ID) .
+	docker tag $(REPOSITORY):$(VERSION)-$(BUILD_ID) $(REPOSITORY):latest
+
+run: 
+	docker run --name MagicMirror -d \
+          -e ENV_GITHUB_TOKEN=<YOUR_GITHUB_TOKEN> \
+	  -e ENV_STOCKS=INDEXSTOXX:SX5E \
+	  -e ENV_WEATHER_API_KEY=<YOUR_WEATHER_API_KEY> \
+	  -e ENV_WEATHER_PWS=pws:<YOUR_WEATHER_PWS> \
+	  -e ENV_CALENDAR_TOKEN=<YOUR_GMAIL_CALENDAR_TOKEN> \
+	  -e ENV_GMAIL_ADDRESS=<YOUR_GMAIL_ADDRESS> \
+	  -e ENV_HUE_BRIDGE_IP=<YOUR_HUE_BRIDGE_IP> \
+	  -e ENV_HUE_USER_ID=<YOUR_HUE_USER_ID> \
+	  -e ENV_VOICE_CODE=<YOUR_VOICE_CODE_COMMAND> \
+	  -e LD_LIBRARY_PATH=/usr/local/lib/ \
+	  -w /root/MagicMirror \
+	  --privileged \
+	  -p 8080:8080 \
+	  $(REPOSITORY):latest \
+	  node serveronly/index.js       
+ 
