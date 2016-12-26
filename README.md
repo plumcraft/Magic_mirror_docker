@@ -9,5 +9,5 @@
  - Check docker process :
     - docker ps
  - Go to url :
-    - http://<MagicMirror_IP>:8080/
+    - http://IP:8080/
 
