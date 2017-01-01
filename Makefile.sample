@@ -12,18 +12,24 @@ build:
 run: 
 	docker run --name MagicMirror -d \
           -e ENV_GITHUB_TOKEN=<YOUR_GITHUB_TOKEN> \
-	  -e ENV_STOCKS=INDEXSTOXX:SX5E \
-	  -e ENV_WEATHER_API_KEY=<YOUR_WEATHER_API_KEY> \
-	  -e ENV_WEATHER_PWS=pws:<YOUR_WEATHER_PWS> \
-	  -e ENV_CALENDAR_TOKEN=<YOUR_GMAIL_CALENDAR_TOKEN> \
-	  -e ENV_GMAIL_ADDRESS=<YOUR_GMAIL_ADDRESS> \
-	  -e ENV_HUE_BRIDGE_IP=<YOUR_HUE_BRIDGE_IP> \
-	  -e ENV_HUE_USER_ID=<YOUR_HUE_USER_ID> \
-	  -e ENV_VOICE_CODE=<YOUR_VOICE_CODE_COMMAND> \
-	  -e LD_LIBRARY_PATH=/usr/local/lib/ \
-	  -w /root/MagicMirror \
-	  --privileged \
-	  -p 8080:8080 \
-	  $(REPOSITORY):latest \
-	  node serveronly/index.js       
+          -e ENV_STOCKS=INDEXSTOXX:SX5E \
+          -e ENV_WEATHER_API_KEY=<YOUR_WEATHER_API_KEY> \
+          -e ENV_WEATHER_PWS=pws:<YOUR_WEATHER_PWS> \
+          -e ENV_CALENDAR_TOKEN=<YOUR_GMAIL_CALENDAR_TOKEN> \
+          -e ENV_GMAIL_ADDRESS=<YOUR_GMAIL_ADDRESS> \
+          -e ENV_HUE_BRIDGE_IP=<YOUR_HUE_BRIDGE_IP> \
+          -e ENV_HUE_USER_ID=<YOUR_HUE_USER_ID> \
+          -e ENV_SONOS_HTTP_API_ADDRESS=<YOUR_SONOS_API_ADDRESS> \
+          -e ENV_VOICE_CODE=<YOUR_VOICE_CODE_COMMAND> \
+          -e LD_LIBRARY_PATH=/usr/local/lib/ \
+          -e ENV_RSS_FEED=<YOUR_RSS_FEED> \
+          -e ENV_NET_DEVICES=<YOUR_NET_DEVICES> \
+          -e ENV_NETATMO_CLIENT_ID=<YOUR_ENV_NETATMO_CLIENT_ID> \
+          -e ENV_NETATMO_CLIENT_SECRET=<YOUR_ENV_NETATMO_CLIENT_SECRET> \
+          -e ENV_NETATMO_TOKEN=<YOUR_ENV_NETATMO_TOKEN> \
+          -w /root/MagicMirror \
+          --privileged \
+          -p 8080:8080 \
+          $(REPOSITORY):latest \
+          node serveronly/index.js       
  
