@@ -1,5 +1,9 @@
 #!/bin/bash
 
+better_sed() {
+  sed -i "s/$(echo $1 | sed -e 's/\([[\/.*]\|\]\)/\\&/g')/$(echo $2 | sed -e 's/[\/&]/\\&/g')/g" $3
+}
+
 clone_repo() {
  cd ~/MagicMirror/modules
  echo -e "\e[96mCloning Plumcraft $1 ...\e[90m"
@@ -28,3 +32,4 @@ package_install() {
   exit;
  fi
 }
+
