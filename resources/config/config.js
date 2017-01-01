@@ -16,7 +16,7 @@ var navbar	= { module: 'mmm-navbar', position: 'fullscreen_above', classes: 'def
 var stocks	= { module: 'mmm-stocks', position: 'top_bar', config: { stocks: 'ENV_STOCKS' , updateInterval: 37000 }, classes: 'plumcraft' };
 
 /* TOP LEFT */
-var clock	= { module: 'clock', position: 'top_left', classes: 'everyone' };
+var clock	= { module: 'clock', position: 'top_left', classes: 'default everyone' };
 var weather	= { module: 'mmm-wunderground', position: 'top_left', config: { apikey: 'ENV_WEATHER_API_KEY' , pws: 'ENV_WEATHER_PWS' , hourly: '1' }, classes: 'everyone' };
 var calendarnrx = { module: 'calendar', position: 'top_left', config: { calendars: [{ symbol: 'calendar-check-o', url: 'https://calendar.google.com/calendar/ical/ENV_GMAIL_ADDRESS/private-ENV_CALENDAR_TOKEN/basic.ics' }] }, classes: 'plumcraft' };
 
